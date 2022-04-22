@@ -4,7 +4,7 @@ var randomNumber = function(min, max) {
     var value = Math.floor(Math.random() * (max - min + 1) + min);
 
     return value;
-}
+};
 
 var fightOrSkip = function() {
     // ask player if they'd like to fight or skip using fightOrSkip function
@@ -26,14 +26,14 @@ var fightOrSkip = function() {
         if (confirmSkip) {
             window.alert(playerInfo.name + " has decided to skip this fight. Goodbye!");
             // subtract money from playerMoney for skipping
-            playerInfo.playerMoney = playerInfo.money - 10;
+            playerInfo.money = playerInfo.money - 10;
             console.log("Your remaining money = " + playerInfo.money);
             
             return true;
         }
     }
     return false;
-}
+};
 
 var fight = function(enemy) {
 
@@ -89,7 +89,7 @@ var fight = function(enemy) {
             window.alert(playerInfo.name + " still has " + playerInfo.health + " health left.");
         }
     } // end of while loop
-}; // end of fight function
+};
 
 var startGame = function() {
     // reset player stats
@@ -150,40 +150,35 @@ var endGame = function() {
     else {
         window.alert("Thank you for playing Robot Gladiators!")
     }
-}
+};
 
 var shop = function() {
     console.log("entered the shop");
 
     // ask player what they'd like to do
-    var shopOptionPrompt = window.prompt("Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE.'");
-
+    var shopOptionPrompt = window.prompt("Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter 1 for 'REFILL', 2 for 'UPGRADE', or 3 for 'LEAVE'");
+    shopOptionPrompt = parseInt(shopOptionPrompt);
     switch (shopOptionPrompt) {
-        case "refill":
-        case "REFILL":
+
+        case 1:
             playerInfo.refillHealth();
             break;
     
-        case "upgrade":
-        case "UPGRADE":
+        case 2:
             playerInfo.upgradeAttack();
             break;
 
-        case "leave":
-        case "LEAVE":
+        case 3:
             window.alert("Leaving the shop.")
-
-            // do nothing so function will end
             break;
 
         default:
             window.alert("You did not pick a valid option. Try again.")
-
             //call shop() again to force player to pick a valid option
             shop();
             break;
     }
-}
+};
 
 var getPlayerName = function() {
     var name = "";
